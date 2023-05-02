@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar/NavBar';
 
 function HomePage(props) {
     return (
-        <div>
+        <div className='Home'>
             <NavBar />
 
         </div>

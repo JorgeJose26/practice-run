@@ -1,0 +1,29 @@
+.navBar {
+    background-color: #4C5760;
+    padding: 0.5rem;
+    border: 5px solid #A59E8C;
+
+
+    &-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        list-style: none;
+
+        &-item {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+    }
+
+}
+
+.navBar-list-link {
+    text-decoration: none;
+    color: #93A8AC;
+
+}
+
+.navBar-list-link:hover {
+    color: #D7CEB2;
+}

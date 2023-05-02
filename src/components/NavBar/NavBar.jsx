@@ -5,15 +5,19 @@ function NavBar(props) {
     return (
         <div className='navBar'>
             <ul className='navBar-list'>
-                <il className="navBar-list-item">Home</il>
-                <il className="navBar-list-item">Contact</il>
-                <li className='navBar-list-item'>Resume</li>
-                <li className='navBar-list-item'>PortFolio</li>
+                <a className='navBar-list-link' href='/'>
+                    <li className="navBar-list-item">Home</li>
+                </a>
+                <a className='navBar-list-link'>
+                    <li className="navBar-list-item">Contact</li>
+                </a>
+                <a className='navBar-list-link'>
+                    <li className="navBar-list-item">Resume</li>
+                </a>
+                <a className='navBar-list-link'>
+                    <li className="navBar-list-item">PortFolio</li>
+                </a>
             </ul>
-
-
-
-
         </div>
     );
 }
