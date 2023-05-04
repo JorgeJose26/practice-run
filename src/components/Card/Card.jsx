@@ -50,6 +50,7 @@ function Card(props) {
 
 
     return (
+
         <div className='card'>
             <div className='card-title'>
                 <h2 className='card-title-name'>{capitalizeWords(pokemon.name)}</h2>
