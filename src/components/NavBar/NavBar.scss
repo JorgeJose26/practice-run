@@ -1,6 +1,6 @@
 .navBar {
     background-color: #4C5760;
-    padding: 0.5rem;
+    padding: 1rem;
     border: 5px solid #A59E8C;
 
 
@@ -9,6 +9,7 @@
         align-items: center;
         justify-content: space-around;
         list-style: none;
+        margin: 0;
 
         &-item {
             font-weight: 600;

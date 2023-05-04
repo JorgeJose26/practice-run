@@ -1,0 +1,14 @@
+.card {
+    &-title {
+        border-bottom: 1px solid black;
+
+        &-name {
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.card-container {}
+
+.card-img {}
