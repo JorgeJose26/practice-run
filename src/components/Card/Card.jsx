@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./Card.scss";
 import axios from 'axios';
-import {
-    MDBCard,
-    MDBCardImage,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBCardOverlay,
-    MDBCardText,
-    MDBCardLink,
-    MDBListGroup,
-    MDBListGroupItem,
-    MDBCol,
-    MDBRow,
-    MDBContainer
-} from 'mdb-react-ui-kit';
+
 
 
 
