@@ -5,9 +5,17 @@ import { MDBContainer } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-function GamePage({ pokemonTypes }) {
+function GamePage({ caps }) {
 
     const [pokemon, setPokemon] = useState(null);
+
+    const capitalizeWords = (str) => {
+        return str
+            .toLowerCase()
+            .split(' ')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
 
 
     useEffect(() => {
@@ -107,16 +115,19 @@ function GamePage({ pokemonTypes }) {
 
 
 
-    const handleTypeMatchUps = (selectedType) => {
+    const handleTypeMatchUps = (e) => {
         let currentPokemontype = pokemon.types[0].type.name;
         let currentWeaknesses = typeMatchups[currentPokemontype].weaknesses;
-        let correctAwnser = [];
-        let incorrectAwnser = "Wrong";
+        let selectedType = e.target.innerHTML;
+
+
+
         currentWeaknesses.forEach(type => {
-            if (type == selectedType) {
+            if ((capitalizeWords(type)) === (selectedType)) {
+                console.log(type);
                 console.log('you win');
             } else {
-                console.log("Yo");
+                console.log("You lose");
             }
 
         });

@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import "./MenuButtons.scss"
 
 
 function MenuButtons({ handleTypeMatchUps }) {
+
+
+
     const pokemonTypes = ["Normal", "Fire", "Flying", "Psychic", "Water", "Bug", "Grass", "Rock", "Electric", "Ghost",
         "Ice", "Dark", "Fighting", "Dragon", "Poison", "Steel", "Ground", "Fairy"]
+
+
 
 
     return (
