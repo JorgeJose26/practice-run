@@ -35,6 +35,7 @@ function Card({ pokemon }) {
 
 
         </div>
+
     );
 }
 

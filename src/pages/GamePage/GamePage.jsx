@@ -5,17 +5,15 @@ import { MDBContainer } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-function GamePage({ caps }) {
+function GamePage() {
 
     const [pokemon, setPokemon] = useState(null);
+    const [count, setCount] = useState(0);
+    const [correct, setCorrect] = useState(false);
 
-    const capitalizeWords = (str) => {
-        return str
-            .toLowerCase()
-            .split(' ')
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    };
+
+
+
 
 
     useEffect(() => {
@@ -111,40 +109,29 @@ function GamePage({ caps }) {
     };
 
 
-
-
-
-
     const handleTypeMatchUps = (e) => {
         let currentPokemontype = pokemon.types[0].type.name;
         let currentWeaknesses = typeMatchups[currentPokemontype].weaknesses;
-        let selectedType = e.target.innerHTML;
+        let selectedType = e.target.innerHTML.toLowerCase();
 
 
 
-        currentWeaknesses.forEach(type => {
-            if ((capitalizeWords(type)) === (selectedType)) {
-                console.log(type);
-                console.log('you win');
-            } else {
-                console.log("You lose");
+        currentWeaknesses.map(type => {
+            if (type === selectedType) {
+                setCount(count + 1);
+                setCorrect(true);
+                console.log(correct)
+                return;
             }
 
         });
-        // loop through the weaknesses array and compare to the anwser(selectedType)
-        /*
-            for each type in weakenesses { type
-                if type == selectedType {
-                    You WIN!
-                }
-            }
-
-       */
-
-
-
     }
+    const handleLossWin = () => {
+        if (correct === false) {
+            setCount(0);
 
+        }
+    }
     return (
         <div>
             <NavBar />
@@ -154,7 +141,7 @@ function GamePage({ caps }) {
 
 
             </MDBContainer>
-            <MenuButtons handleTypeMatchUps={handleTypeMatchUps} />
+            <MenuButtons count={count} handleLossWin={handleLossWin} handleTypeMatchUps={handleTypeMatchUps} />
         </div>
     );
 }

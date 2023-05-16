@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import "./MenuButtons.scss"
 
 
-function MenuButtons({ handleTypeMatchUps }) {
+function MenuButtons({ count, handleTypeMatchUps }) {
 
 
 
@@ -16,6 +16,7 @@ function MenuButtons({ handleTypeMatchUps }) {
     return (
 
         <section className='menu'>
+            <p>{count}</p>
             <div className='menu-buttons'>
                 <button onClick={handleTypeMatchUps} className='menu-buttons-normal'>{pokemonTypes[0]}</button>
                 <button onClick={handleTypeMatchUps} className='menu-buttons-fire'>{pokemonTypes[1]}</button>

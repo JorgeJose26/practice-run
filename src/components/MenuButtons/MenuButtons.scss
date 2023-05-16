@@ -6,97 +6,115 @@
         border: 2px solid #1F01B9;
         border-radius: 1rem;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        flex-wrap: wrap;
+
 
 
         &-normal {
             background-color: #A8A77A;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
+
         }
 
         &-fire {
             background-color: #EE8130;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-flying {
             background-color: #A98FF3;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-psychic {
             background-color: #F95587;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-water {
             background-color: #6390F0;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-bug {
             background-color: #A6B91A;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-grass {
             background-color: #7AC74C;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-rock {
             background-color: #B6A136;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-electric {
             background-color: #F7D02C;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-ghost {
             background-color: #735797;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-ice {
             background-color: #96D9D6;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-dark {
             background-color: #705746;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-fighting {
             background-color: #C22E28;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-dragon {
             background-color: #6f35fc;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-poison {
             background-color: #a33ea1;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
 
         }
 
@@ -104,18 +122,21 @@
             background-color: #B7B7CE;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-ground {
             background-color: #E2BF65;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
         &-fairy {
             background-color: #D685AD;
             border-radius: 1rem;
             padding: 1rem;
+            width: 6rem;
         }
 
 
