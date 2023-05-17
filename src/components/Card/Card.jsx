@@ -18,6 +18,8 @@ function Card({ pokemon }) {
 
 
 
+
+
     return (
 
         <div className='card'>

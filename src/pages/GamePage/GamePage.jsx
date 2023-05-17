@@ -114,24 +114,41 @@ function GamePage() {
         let currentWeaknesses = typeMatchups[currentPokemontype].weaknesses;
         let selectedType = e.target.innerHTML.toLowerCase();
 
+        if (currentWeaknesses[0] === selectedType) {
+            setCount(count + 1);
+            setCorrect(true)
+        } else if (currentWeaknesses[1] === selectedType) {
+            setCount(count + 1);
+            setCorrect(true)
 
+        } else if (currentWeaknesses[2] === selectedType) {
+            setCount(count + 1);
+            setCorrect(true)
 
-        currentWeaknesses.map(type => {
-            if (type === selectedType) {
-                setCount(count + 1);
-                setCorrect(true);
-                console.log(correct)
-                return;
-            }
+        } else if (currentWeaknesses[3] === selectedType) {
+            setCount(count + 1);
+            setCorrect(true)
 
-        });
-    }
-    const handleLossWin = () => {
-        if (correct === false) {
-            setCount(0);
+        } else if (currentWeaknesses[4] === selectedType) {
+            setCount(count + 1);
+            setCorrect(true)
+
+        } else if (currentWeaknesses[5] === selectedType) {
+            setCount(count + 1);
+            setCorrect(true)
+
+        } else {
+            setCorrect(false)
+            console.log("Wrong!");
+            console.log(correct);
+
 
         }
+
     }
+
+
+
     return (
         <div>
             <NavBar />
@@ -141,7 +158,7 @@ function GamePage() {
 
 
             </MDBContainer>
-            <MenuButtons count={count} handleLossWin={handleLossWin} handleTypeMatchUps={handleTypeMatchUps} />
+            <MenuButtons count={count} handleTypeMatchUps={handleTypeMatchUps} />
         </div>
     );
 }
