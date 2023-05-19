@@ -9,7 +9,9 @@ function GamePage() {
 
     const [pokemon, setPokemon] = useState(null);
     const [count, setCount] = useState(0);
-    const [correct, setCorrect] = useState(false);
+    const [correct, setCorrect] = useState();
+
+
 
 
 
@@ -26,7 +28,7 @@ function GamePage() {
         };
 
         getRandomPokemon();
-    }, []);
+    }, [correct, count]);
 
     if (!pokemon) return <div>Loading...</div>;
 
@@ -116,29 +118,30 @@ function GamePage() {
 
         if (currentWeaknesses[0] === selectedType) {
             setCount(count + 1);
-            setCorrect(true)
+            setCorrect(1)
         } else if (currentWeaknesses[1] === selectedType) {
             setCount(count + 1);
-            setCorrect(true)
+            setCorrect(1)
 
         } else if (currentWeaknesses[2] === selectedType) {
             setCount(count + 1);
-            setCorrect(true)
+            setCorrect(1)
 
         } else if (currentWeaknesses[3] === selectedType) {
             setCount(count + 1);
-            setCorrect(true)
+            setCorrect(1)
 
         } else if (currentWeaknesses[4] === selectedType) {
             setCount(count + 1);
-            setCorrect(true)
+            setCorrect(1)
 
         } else if (currentWeaknesses[5] === selectedType) {
             setCount(count + 1);
-            setCorrect(true)
+            setCorrect(1)
 
         } else {
-            setCorrect(false)
+            setCorrect(0)
+            setCount(0);
             console.log("Wrong!");
             console.log(correct);
 
