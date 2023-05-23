@@ -18,6 +18,9 @@ function GamePage() {
 
 
 
+
+
+
     useEffect(() => {
         const getRandomPokemon = async () => {
             const randomNumber = Math.floor(Math.random() * 898) + 1;
@@ -118,37 +121,43 @@ function GamePage() {
 
         if (currentWeaknesses[0] === selectedType) {
             setCount(count + 1);
-            setCorrect(1)
+
         } else if (currentWeaknesses[1] === selectedType) {
             setCount(count + 1);
-            setCorrect(1)
+
 
         } else if (currentWeaknesses[2] === selectedType) {
             setCount(count + 1);
-            setCorrect(1)
+
 
         } else if (currentWeaknesses[3] === selectedType) {
             setCount(count + 1);
-            setCorrect(1)
+
 
         } else if (currentWeaknesses[4] === selectedType) {
             setCount(count + 1);
-            setCorrect(1)
+
 
         } else if (currentWeaknesses[5] === selectedType) {
             setCount(count + 1);
-            setCorrect(1)
+
 
         } else {
-            setCorrect(0)
-            setCount(0);
             console.log("Wrong!");
-            console.log(correct);
+
 
 
         }
 
+
     }
+
+    const handleWinLoss = () => {
+        if (count++) {
+            console.log("win");
+        }
+    }
+
 
 
 

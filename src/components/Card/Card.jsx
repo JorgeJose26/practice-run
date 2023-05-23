@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import "./Card.scss";
 
 
@@ -7,6 +8,7 @@ import "./Card.scss";
 
 
 function Card({ pokemon }) {
+    const { ref: myRef, inView: myElementIsVisable } = useInView();
 
     const capitalizeWords = (str) => {
         return str
