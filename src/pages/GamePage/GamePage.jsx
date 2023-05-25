@@ -163,7 +163,6 @@ function GamePage() {
 
     return (
         <div>
-            <NavBar />
             <MDBContainer className='w-25 p-3'>
 
                 {pokemon && <Card pokemon={pokemon} />}
