@@ -2,6 +2,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import Card from '../../components/Card/Card';
 import MenuButtons from '../../components/MenuButtons/MenuButtons';
 import { MDBContainer } from 'mdb-react-ui-kit';
+import { useInView } from 'react-intersection-observer';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
@@ -9,7 +10,8 @@ function GamePage() {
 
     const [pokemon, setPokemon] = useState(null);
     const [count, setCount] = useState(0);
-    const [correct, setCorrect] = useState();
+
+
 
 
 
@@ -31,7 +33,7 @@ function GamePage() {
         };
 
         getRandomPokemon();
-    }, [correct, count]);
+    }, [count]);
 
     if (!pokemon) return <div>Loading...</div>;
 
@@ -144,19 +146,16 @@ function GamePage() {
 
         } else {
             console.log("Wrong!");
-
+            setCount(0);
 
 
         }
 
 
+
     }
 
-    const handleWinLoss = () => {
-        if (count++) {
-            console.log("win");
-        }
-    }
+
 
 
 

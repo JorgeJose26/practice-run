@@ -22,9 +22,12 @@ function Card({ pokemon }) {
 
 
 
+
+
+
     return (
 
-        <div className='card'>
+        <div ref={myRef} className={`card ${myElementIsVisable ? `animate` : ''}`}>
             <div className='card-title'>
                 <h2 className='card-title-name'>{capitalizeWords(pokemon.name)}</h2>
             </div>
@@ -33,7 +36,7 @@ function Card({ pokemon }) {
 
             </div>
             <div className='card-footer'>
-                <h2>Type: {capitalizeWords(pokemon.types[0].type.name)}</h2>
+                <h2> {capitalizeWords(pokemon.types[0].type.name)}</h2>
 
             </div>
 
