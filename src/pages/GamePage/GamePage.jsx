@@ -10,18 +10,7 @@ function GamePage() {
 
     const [pokemon, setPokemon] = useState(null);
     const [count, setCount] = useState(0);
-
-
-
-
-
-
-
-
-
-
-
-
+                                                                                                                                        
 
     useEffect(() => {
         const getRandomPokemon = async () => {
