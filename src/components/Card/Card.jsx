@@ -18,6 +18,14 @@ function Card({ pokemon }) {
             .join(' ');
     };
 
+    let pokemonTypeOne = pokemon.types.length > 0 ? pokemon.types[0].type.name : null;
+    let pokemonTypeTwo = pokemon.types.length > 1 ? pokemon.types[1].type.name : null;
+    
+    console.log(pokemonTypeOne);
+    console.log(pokemonTypeTwo);
+
+
+
 
 
 
@@ -32,13 +40,18 @@ function Card({ pokemon }) {
                 <h2 className='card-title-name'>{capitalizeWords(pokemon.name)}</h2>
             </div>
             <div className='card-container'>
-                <img className='card-img' src={pokemon.sprites.other.home.front_default} alt={pokemon.name} />
+            <img className='card-container-img' src={pokemon.sprites.other?.home?.front_default} alt={pokemon.name} />
+
 
             </div>
             <div className='card-footer'>
-                <h2> {capitalizeWords(pokemon.types[0].type.name)}</h2>
+    <h2 className='card-footer-type1'>{capitalizeWords(pokemonTypeOne)}</h2>
+    {pokemonTypeTwo && (
+        <h2 className='card-footer-type2'>{capitalizeWords(pokemonTypeTwo)}</h2>
+    )}
+</div>
 
-            </div>
+
 
 
         </div>
