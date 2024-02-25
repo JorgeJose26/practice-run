@@ -3,7 +3,12 @@ import React from "react";
 import "./MenuButtons.scss";
 import { useAuth } from "../../contexts/AuthContexts";
 
-function MenuButtons({ count, handleTypeMatchUps }) {
+function MenuButtons({
+  count,
+  handleTypeMatchUps,
+  formatTime,
+  hourRemaining = { hourRemaining },
+}) {
   const { timeRemaining } = useAuth();
 
   const pokemonTypes = [
@@ -30,8 +35,12 @@ function MenuButtons({ count, handleTypeMatchUps }) {
   return (
     <>
       <div>
-        <p>{count}</p>
-        <p>{timeRemaining}</p>
+        <p>
+          <span>Hot Streak : </span>
+          {count}
+        </p>
+        <p>Time Remaining: {timeRemaining}</p>
+        <p>Time Remaining: {formatTime(hourRemaining)}</p>
       </div>
 
       <section className="m-8">

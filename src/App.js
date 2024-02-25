@@ -5,6 +5,7 @@ import GamePage from './pages/GamePage/GamePage';
 import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/Profile';
+import Results from './components/Results/Results';
 import { AuthProvider } from "../src/contexts/AuthContexts"
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path='/game' element={<GamePage />} />
             <Route path='/login' element={<Login/>}/>
             <Route path='/profile' element={<Profile/>}/>
+            <Route path='/results' element={<Results/>}/>
           </Routes>
         </AuthProvider>
       </BrowserRouter>

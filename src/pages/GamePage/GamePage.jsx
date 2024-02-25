@@ -12,16 +12,46 @@ function GamePage() {
   const { trys, setTrys } = useAuth();
   const { setTimeRemaining } = useAuth();
   const [gameTime, setGameTime] = useState(0);
+  const fiveMin = 300000;
+  const [hourRemaining, setHourRemaining] = useState(fiveMin);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       // Redirect to another page
-      navigate("/");
-    }, 300000); // 5 minutes in milliseconds
+      navigate("/results");
+    }, hourRemaining);
 
     // Clear the timeout on component unmount to prevent memory leaks
     return () => clearTimeout(timeoutId);
-  });
+  }, [hourRemaining]);
+
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setHourRemaining((prevTime) => {
+        // Subtract 1 second from the remaining time
+        const newTime = prevTime - 1000;
+
+        if (newTime <= 0) {
+          // Redirect to another page when time runs out
+          navigate("/results");
+          return 0;
+        }
+
+        return newTime;
+      });
+    }, 1000); // Update every second
+
+    return () => clearInterval(timerId);
+  }, []);
+
+  const formatTime = (ms) => {
+    const seconds = Math.floor((ms / 1000) % 60);
+    const minutes = Math.floor((ms / 1000 / 60) % 60);
+
+    return `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}`;
+  };
 
   if (!pokemon) return <div>Loading...</div>;
 
@@ -230,7 +260,12 @@ function GamePage() {
       <MDBContainer className="w-25 p-3">
         {pokemon && <Card trys={trys} key={count} pokemon={pokemon} />}
       </MDBContainer>
-      <MenuButtons count={count} handleTypeMatchUps={handleTypeMatchUps} />
+      <MenuButtons
+        count={count}
+        formatTime={formatTime}
+        hourRemaining={hourRemaining}
+        handleTypeMatchUps={handleTypeMatchUps}
+      />
     </div>
   );
 }

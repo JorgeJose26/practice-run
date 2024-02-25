@@ -44,15 +44,7 @@ export function AuthProvider({ children }){
       }, [trys]);
 
       
-      useEffect(() => {
-        // Run the useEffect hook again after 10 seconds
-        const timeoutId = setTimeout(() => {
-          setTrys(trys + 1);
-        }, 10000); // 10 seconds
-    
-        // Clean up the timeout to prevent memory leaks
-        return () => clearTimeout(timeoutId);
-      }, [trys]);
+     
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -63,14 +55,23 @@ export function AuthProvider({ children }){
     }, [])
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-          setTimeRemaining((prevTimeRemaining) =>
-            prevTimeRemaining === 0 ? 10 : prevTimeRemaining - 1
-          );
-        }, 1000);
-    
-        return () => clearInterval(intervalId);
-      }, []);
+      const timeoutId = setTimeout(() => {
+        setTrys((prevTrys) => prevTrys + 1);
+      }, 10000); // 10 seconds
+  
+      // Clean up the timeout to prevent memory leaks
+      return () => clearTimeout(timeoutId);
+    }, [trys]);
+  
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        setTimeRemaining((prevTimeRemaining) =>
+          prevTimeRemaining === 0 ? 10 : prevTimeRemaining - 1
+        );
+      }, 1000);
+  
+      return () => clearInterval(intervalId);
+    }, []);
 
     
 
