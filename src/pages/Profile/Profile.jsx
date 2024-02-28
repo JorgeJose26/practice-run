@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 function Profile(props) {
   const { ref: myRef, inView: myElementIsVisable } = useInView();
+  const { pokemon } = useAuth();
 
   const capitalizeWords = (str) => {
     return str
@@ -18,11 +19,6 @@ function Profile(props) {
     pokemon.types.length > 0 ? pokemon.types[0].type.name : null;
   let pokemonTypeTwo =
     pokemon.types.length > 1 ? pokemon.types[1].type.name : null;
-  const [error, setError] = useState("");
-  const [fainted, setFainted] = useState();
-  const { currentUser, logout } = useAuth();
-  const { pokemon } = useAuth();
-  const navigate = useNavigate();
 
   return (
     <div>

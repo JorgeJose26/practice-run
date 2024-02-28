@@ -17,6 +17,9 @@ export function AuthProvider({ children }){
     const [timeRemaining, setTimeRemaining] = useState(10);
    
    
+   
+   
+   
     
     function signup(email, password) {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -33,15 +36,21 @@ export function AuthProvider({ children }){
     useEffect(() => {
         const getRandomPokemon = async () => {
           const randomNumber = Math.floor(Math.random() * 898) + 1;
+          
           const response = await axios.get(
             `https://pokeapi.co/api/v2/pokemon/${randomNumber}`
           );
           setPokemon(response.data);
           console.log(pokemon);
+
         };
-    
+       
         getRandomPokemon();
       }, [trys]);
+
+      
+
+      
 
       
      
@@ -72,6 +81,15 @@ export function AuthProvider({ children }){
   
       return () => clearInterval(intervalId);
     }, []);
+  
+    const formatRoundTime = (seconds) => {
+      const minutes = Math.floor(seconds / 60);
+      const remainingSeconds = seconds % 60;
+      return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
+        .toString()
+        .padStart(2, "0")}`;
+    };
+  
 
     
 
@@ -84,7 +102,10 @@ export function AuthProvider({ children }){
         pokemon,
         setTrys,
         timeRemaining,
-        setTimeRemaining
+        setTimeRemaining,
+        formatRoundTime,
+       
+       
         
     }
     return (

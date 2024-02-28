@@ -1,4 +1,5 @@
 import Card from "../../components/Card/Card";
+import Results from "../../components/Results/Results";
 import MenuButtons from "../../components/MenuButtons/MenuButtons";
 import { MDBContainer } from "mdb-react-ui-kit";
 import React, { useState, useEffect } from "react";
@@ -6,40 +7,29 @@ import { useAuth } from "../../contexts/AuthContexts";
 import { useNavigate } from "react-router-dom";
 
 function GamePage() {
-  const navigate = useNavigate();
   const { pokemon } = useAuth();
   const [count, setCount] = useState(0);
   const { trys, setTrys } = useAuth();
   const { setTimeRemaining } = useAuth();
-  const [gameTime, setGameTime] = useState(0);
   const fiveMin = 300000;
   const [hourRemaining, setHourRemaining] = useState(fiveMin);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      // Redirect to another page
-      navigate("/results");
-    }, hourRemaining);
-
-    // Clear the timeout on component unmount to prevent memory leaks
-    return () => clearTimeout(timeoutId);
-  }, [hourRemaining]);
+  const [highestStreak, setHighestStreak] = useState(0);
+  const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
     const timerId = setInterval(() => {
       setHourRemaining((prevTime) => {
-        // Subtract 1 second from the remaining time
         const newTime = prevTime - 1000;
 
         if (newTime <= 0) {
-          // Redirect to another page when time runs out
-          navigate("/results");
+          clearInterval(timerId);
+          setShowResults(true); // Set showResults to true when time is up
           return 0;
         }
 
         return newTime;
       });
-    }, 1000); // Update every second
+    }, 1000);
 
     return () => clearInterval(timerId);
   }, []);
@@ -254,6 +244,9 @@ function GamePage() {
       }
     }
   };
+  if (count > highestStreak) {
+    setHighestStreak(count);
+  }
 
   return (
     <div>
@@ -266,6 +259,7 @@ function GamePage() {
         hourRemaining={hourRemaining}
         handleTypeMatchUps={handleTypeMatchUps}
       />
+      {showResults && <Results highestStreak={highestStreak} />}
     </div>
   );
 }

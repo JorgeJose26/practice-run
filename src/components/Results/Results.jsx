@@ -1,9 +1,10 @@
 import React from "react";
 
-function Results(props) {
+function Results({ highestStreak }) {
+  console.log(highestStreak);
   return (
     <div>
-      <p>poop</p>
+      <p>{highestStreak}</p>
     </div>
   );
 }
