@@ -15,7 +15,9 @@ export function AuthProvider({ children }){
     const [pokemon, setPokemon] = useState();
     const [trys, setTrys] = useState(0);
     const [timeRemaining, setTimeRemaining] = useState(10);
-   
+    const [highestStreak, setHighestStreak] = useState(0);
+    const [newPokemon, setNewPokemon] = useState([]);
+    
    
    
    
@@ -41,6 +43,11 @@ export function AuthProvider({ children }){
             `https://pokeapi.co/api/v2/pokemon/${randomNumber}`
           );
           setPokemon(response.data);
+          setNewPokemon((prevNewPokemon) => [...prevNewPokemon, {
+            name: response.data.name,
+            type: response.data.types.map(type => type.type.name),
+            image: response.data.sprites.front_default
+          }]);
           console.log(pokemon);
 
         };
@@ -104,7 +111,9 @@ export function AuthProvider({ children }){
         timeRemaining,
         setTimeRemaining,
         formatRoundTime,
-       
+        highestStreak,
+        setHighestStreak,
+        newPokemon
        
         
     }

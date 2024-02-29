@@ -4,7 +4,6 @@ import MenuButtons from "../../components/MenuButtons/MenuButtons";
 import { MDBContainer } from "mdb-react-ui-kit";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
-import { useNavigate } from "react-router-dom";
 
 function GamePage() {
   const { pokemon } = useAuth();
@@ -15,6 +14,8 @@ function GamePage() {
   const [hourRemaining, setHourRemaining] = useState(fiveMin);
   const [highestStreak, setHighestStreak] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  const [won, setWon] = useState(0);
+  const [lost, setLost] = useState(0);
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -175,11 +176,13 @@ function GamePage() {
         setCount(count + 1);
         setTrys(trys + 1);
         setTimeRemaining(10);
+        setWon(won + 1);
       } else {
         console.log("wrong");
         setCount(0);
         setTrys(trys + 1);
         setTimeRemaining(10);
+        setLost(lost + 1);
       }
       //You have to take resistances into account for pokemon with two types
       //for example if a pokemon is water/dragon. water is weak to electric but dragon isn't so it would be super effective.
@@ -218,6 +221,7 @@ function GamePage() {
         setCount(0);
         setTrys(trys + 1);
         setTimeRemaining(10);
+        setLost(lost + 1);
       } else if (
         currentWeaknesses[0] === selectedType ||
         currentWeaknesses[1] === selectedType ||
@@ -234,11 +238,13 @@ function GamePage() {
       ) {
         setCount(count + 1);
         setTrys(trys + 1);
+        setWon(won + 1);
         setTimeRemaining(10);
       } else {
         console.log("wrong");
         console.log("didnt hit a super effective move");
         setCount(0);
+        setLost(lost + 1);
         setTrys(trys + 1);
         setTimeRemaining(10);
       }
@@ -259,7 +265,9 @@ function GamePage() {
         hourRemaining={hourRemaining}
         handleTypeMatchUps={handleTypeMatchUps}
       />
-      {showResults && <Results highestStreak={highestStreak} />}
+      {showResults && (
+        <Results highestStreak={highestStreak} won={won} lost={lost} />
+      )}
     </div>
   );
 }

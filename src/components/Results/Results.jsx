@@ -1,10 +1,23 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContexts";
 
-function Results({ highestStreak }) {
+function Results({ highestStreak, won, lost }) {
+  const { newPokemon } = useAuth();
+
   console.log(highestStreak);
   return (
     <div>
-      <p>{highestStreak}</p>
+      {newPokemon.map((p, index) => (
+        <div key={index}>
+          <h2>{p.name}</h2>
+          <p>Type: {p.type.join(", ")}</p>
+          <img src={p.image} alt={p.name} />
+          <p>{highestStreak}</p>
+          <p>{won}</p>
+          <p>{lost}</p>
+        </div>
+      ))}
     </div>
   );
 }
