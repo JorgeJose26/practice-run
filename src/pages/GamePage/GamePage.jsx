@@ -4,18 +4,20 @@ import MenuButtons from "../../components/MenuButtons/MenuButtons";
 import { MDBContainer } from "mdb-react-ui-kit";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
+import axios from "axios";
 
 function GamePage() {
   const { pokemon } = useAuth();
-  const [count, setCount] = useState(0);
+  const { count, setCount } = useAuth();
   const { trys, setTrys } = useAuth();
   const { setTimeRemaining } = useAuth();
-  const fiveMin = 300000;
+  const fiveMin = 10000;
   const [hourRemaining, setHourRemaining] = useState(fiveMin);
-  const [highestStreak, setHighestStreak] = useState(0);
+  const { highestStreak, setHighestStreak } = useAuth();
   const [showResults, setShowResults] = useState(false);
-  const [won, setWon] = useState(0);
+  const { won, setWon } = useAuth();
   const [lost, setLost] = useState(0);
+  const { handleNewPokemon } = useAuth();
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -177,6 +179,7 @@ function GamePage() {
         setTrys(trys + 1);
         setTimeRemaining(10);
         setWon(won + 1);
+        handleNewPokemon();
       } else {
         console.log("wrong");
         setCount(0);
@@ -240,6 +243,7 @@ function GamePage() {
         setTrys(trys + 1);
         setWon(won + 1);
         setTimeRemaining(10);
+        handleNewPokemon();
       } else {
         console.log("wrong");
         console.log("didnt hit a super effective move");
