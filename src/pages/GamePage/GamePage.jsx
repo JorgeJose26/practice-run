@@ -1,10 +1,8 @@
 import Card from "../../components/Card/Card";
-import Results from "../../components/Results/Results";
 import MenuButtons from "../../components/MenuButtons/MenuButtons";
-import { MDBContainer } from "mdb-react-ui-kit";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function GamePage() {
   const { pokemon } = useAuth();
@@ -14,7 +12,7 @@ function GamePage() {
   const fiveMin = 10000;
   const [hourRemaining, setHourRemaining] = useState(fiveMin);
   const { highestStreak, setHighestStreak } = useAuth();
-  const [showResults, setShowResults] = useState(false);
+  const navigate = useNavigate();
   const { won, setWon } = useAuth();
   const [lost, setLost] = useState(0);
   const { handleNewPokemon } = useAuth();
@@ -26,7 +24,7 @@ function GamePage() {
 
         if (newTime <= 0) {
           clearInterval(timerId);
-          setShowResults(true); // Set showResults to true when time is up
+          navigate("/results");
           return 0;
         }
 
@@ -260,18 +258,13 @@ function GamePage() {
 
   return (
     <div>
-      <MDBContainer className="w-25 p-3">
-        {pokemon && <Card trys={trys} key={count} pokemon={pokemon} />}
-      </MDBContainer>
+      {pokemon && <Card trys={trys} key={count} pokemon={pokemon} />}
       <MenuButtons
         count={count}
         formatTime={formatTime}
         hourRemaining={hourRemaining}
         handleTypeMatchUps={handleTypeMatchUps}
       />
-      {showResults && (
-        <Results highestStreak={highestStreak} won={won} lost={lost} />
-      )}
     </div>
   );
 }
