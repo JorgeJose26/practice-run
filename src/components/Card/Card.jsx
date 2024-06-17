@@ -19,7 +19,12 @@ function Card({ pokemon }) {
     pokemon.types.length > 1 ? pokemon.types[1].type.name : null;
 
   return (
-    <div ref={myRef} className={`card ${myElementIsVisable ? `animate` : ""}`}>
+    <div
+      ref={myRef}
+      className={`card ${
+        myElementIsVisable ? `animate` : ""
+      } flex flex-col justify-center flex-wrap content-center`}
+    >
       <div className="card-title">
         <h2 className="card-title-name">{capitalizeWords(pokemon.name)}</h2>
       </div>
