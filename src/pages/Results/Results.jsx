@@ -49,11 +49,11 @@ function Results() {
         <p>Highest Win Streak: {won}</p>
         <p>Pokemon Defeated</p>
       </div>
-      <div className="auto-cols-auto auto-rows-auto">
+      <div className="flex flex-row w-3/4 justify-center ">
         {newPokemon.map((p, index) => (
           <div
             key={index}
-            className={`flex flex-col items-center border rounded-lg justify-center gap-4 ${getTypeColorClass(
+            className={`items-center border rounded-lg gap-4 ${getTypeColorClass(
               p.type
             )}`}
           >
