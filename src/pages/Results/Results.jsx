@@ -1,10 +1,12 @@
 import React from "react";
 import { useAuth } from "../../contexts/AuthContexts";
+import { useNavigate } from "react-router-dom";
 
 function Results() {
   const { newPokemon } = useAuth();
   const { highestStreak } = useAuth();
   const { won } = useAuth();
+  const navigate = useNavigate();
 
   const capitalizeWords = (str) => {
     return str
@@ -27,14 +29,13 @@ function Results() {
     ghost: "bg-[#735797]",
     ice: "bg-[#96D9D6]",
     dark: "bg-[#705746]",
-    failighting: "bg-[#C22E28]",
+    fighting: "bg-[#C22E28]",
     dragon: "bg-[#6f35fc]",
     poison: "bg-[#a33ea1]",
     steel: "bg-[#B7B7CE]",
     ground: "bg-[#E2BF65]",
     fairy: "bg-[#D685AD]",
   };
-  // Add more types and corresponding Tailwind classes as needed
 
   const getTypeColorClass = (types) => {
     if (!types || types.length === 0) return "bg-gray-200"; // Default color if no type is found
@@ -43,17 +44,18 @@ function Results() {
 
   console.log(highestStreak);
   return (
-    <section>
+    <section className="flex flex-col">
       <div className="mb-5">
         <p>Results</p>
         <p>Highest Win Streak: {won}</p>
         <p>Pokemon Defeated</p>
+        <button onClick={() => navigate(`/game`)}>Return</button>
       </div>
-      <div className="flex flex-row w-3/4 justify-center ">
+      <div className="flex flex-row flex-wrap w-3/4 justify-center gap-8 ">
         {newPokemon.map((p, index) => (
           <div
             key={index}
-            className={`items-center border rounded-lg gap-4 ${getTypeColorClass(
+            className={`items-center border rounded-lg  ${getTypeColorClass(
               p.type
             )}`}
           >
