@@ -49,7 +49,7 @@ function HomePage(props) {
         </div>
       </section>
       <section className="instructions max-w-prose mx-auto mt-8 px-4 ">
-        <p className="font-custom text-2xl text-left border-bottom mb-2">
+        <p className="font-custom text-2xl text-left border-b-4 border-blue-600 mb-2">
           How To Play
         </p>
         <p className="font-custom text-lg leading-relaxed text-left">

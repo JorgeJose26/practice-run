@@ -264,6 +264,9 @@ function GamePage() {
         formatTime={formatTime}
         hourRemaining={hourRemaining}
         handleTypeMatchUps={handleTypeMatchUps}
+        triggerShake={() =>
+          document.querySelector(".card").classList.add("shake")
+        }
       />
     </div>
   );
