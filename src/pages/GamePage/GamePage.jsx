@@ -9,7 +9,7 @@ function GamePage() {
   const { count, setCount } = useAuth();
   const { trys, setTrys } = useAuth();
   const { setTimeRemaining } = useAuth();
-  const fiveMin = 300000;
+  const fiveMin = 200000;
   const [hourRemaining, setHourRemaining] = useState(fiveMin);
   const { highestStreak, setHighestStreak } = useAuth();
   const navigate = useNavigate();

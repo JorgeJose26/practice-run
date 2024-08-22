@@ -1,6 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import "./Card.scss";
+import normalIcon from "../../assets/images/normal.svg";
+import fireIcon from "../../assets/images/fire.svg";
+import flyingIcon from "../../assets/images/flying.svg";
+import psychicIcon from "../../assets/images/psychic.svg";
+import waterIcon from "../../assets/images/water.svg";
+import bugIcon from "../../assets/images/bug.svg";
+import grassIcon from "../../assets/images/grass.svg";
+import rockIcon from "../../assets/images/rock.svg";
+import electricIcon from "../../assets/images/electric.svg";
+import ghostIcon from "../../assets/images/ghost.svg";
+import iceIcon from "../../assets/images/ice.svg";
+import darkIcon from "../../assets/images/dark.svg";
+import fightingIcon from "../../assets/images/fighting.svg";
+import dragonIcon from "../../assets/images/dragon.svg";
+import poisonIcon from "../../assets/images/poison.svg";
+import steelIcon from "../../assets/images/steel.svg";
+import groundIcon from "../../assets/images/ground.svg";
+import fairyIcon from "../../assets/images/fairy.svg";
 
 function Card({ pokemon }) {
   const { ref: myRef, inView: myElementIsVisable } = useInView();
@@ -19,6 +37,27 @@ function Card({ pokemon }) {
     pokemon.types.length > 1 ? pokemon.types[1].type.name : null;
 
   console.log(pokemon.types[0].type.name);
+
+  const typeIcons = {
+    normalIcon: { normalIcon },
+    fire: { fireIcon },
+    flying: { flyingIcon },
+    psychic: { psychicIcon },
+    water: { waterIcon },
+    bug: { bugIcon },
+    grass: { grassIcon },
+    rock: { rockIcon },
+    electric: { electricIcon },
+    ghost: { ghostIcon },
+    ice: { iceIcon },
+    dark: { darkIcon },
+    flighting: { fightingIcon },
+    dragon: { dragonIcon },
+    poison: { poisonIcon },
+    steel: { steelIcon },
+    ground: { groundIcon },
+    fairy: { fairyIcon },
+  };
 
   const typeColorMap = {
     normal: "bg-gray-300",
@@ -63,15 +102,15 @@ function Card({ pokemon }) {
             {capitalizeWords(pokemon.name)}
           </h2>
         </div>
-        <div className="card-container w-[20rem]">
+        <div className="flex items-center justify-center w-64 h-64 overflow-hidden">
           <img
-            className="card-container-img p-6 block "
+            className="w-full h-full object-cover"
             src={pokemon.sprites.other?.home?.front_default}
             alt={pokemon.name}
           />
         </div>
 
-        <div className="card-footer">
+        <div className="card-footer pt-6  ">
           <h2 className={`card-footer-type1 text-2xl mt-2 `}>
             {capitalizeWords(pokemonTypeOne)}
           </h2>

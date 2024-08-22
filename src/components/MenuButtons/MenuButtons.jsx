@@ -39,14 +39,14 @@ function MenuButtons({ count, handleTypeMatchUps, formatTime, hourRemaining }) {
       </div>
 
       <section className="m-8">
-        <div className="grid grid-cols-9 content-center justify-items-center gap-y-2">
+        <div className="grid grid-cols-3 justify-items-center gap-3">
           {pokemonTypes.map((type, index) => (
             <button
               key={index}
               onClick={(e) => {
                 handleTypeMatchUps(e);
               }}
-              className={`menu-buttons-${type.toLowerCase()} rounded-lg p-3 w-24`}
+              className={`menu-buttons-${type.toLowerCase()} rounded-lg p-3 w-20`}
             >
               {type}
             </button>

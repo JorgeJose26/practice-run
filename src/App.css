@@ -2,8 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'mont';
+  src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
+}
 
 .App {
   text-align: center;
 
+}
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+body{
+  background-color: black;
 }
