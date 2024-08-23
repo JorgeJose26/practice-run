@@ -257,7 +257,7 @@ function GamePage() {
   }
 
   return (
-    <div className="p-14">
+    <div className="p-8">
       {pokemon && <Card trys={trys} key={count} pokemon={pokemon} />}
       <MenuButtons
         count={count}

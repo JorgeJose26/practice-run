@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth } from "../../contexts/AuthContexts";
 import { useNavigate } from "react-router-dom";
+import Card from "../../components/Card/Card";
 
 function Results() {
   const { newPokemon } = useAuth();
