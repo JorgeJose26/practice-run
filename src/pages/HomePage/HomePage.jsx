@@ -84,8 +84,13 @@ function HomePage(props) {
           you conquer before the clock hits zero? Dive in and find out!
         </p>
       </div>
-      <div className="flex flex-row items-center content-center gap-2">
-        <img className="w-[2.5rem]" src={pokeBall} alt="PokeBall" />
+      <div className="flex flex-row items-center content-center gap-2 ">
+        <img
+          onClick={() => navigate("/game")}
+          className="shakeButton w-[2.5rem]"
+          src={pokeBall}
+          alt="PokeBall"
+        />
         <h2
           onClick={() => navigate("/game")}
           className="text-white font-[mont] text-2xl"

@@ -130,14 +130,14 @@ function Card({ pokemon }) {
           />
         </div>
         <div className="card-title ">
-          <h2 className="card-title-name text-2xl">
+          <h2 className="card-title-name text-[2rem]">
             {capitalizeWords(pokemon.name)}
           </h2>
         </div>
 
         <div className="card-footer-container pt-6 pb-6 flex flex-row justify-around ">
           <div
-            className={`type-one-container flex flex-row items-center border rounded-md gap-[6px] text-[1rem] font-bold text-white w-[120px] align-middle p-[5px] justify-evenly ${getTypeBgColorClass(
+            className={`type-one-container flex flex-row items-center border rounded-md gap-[8px] text-[1.2rem] font-bold text-white w-[120px] align-middle pt-[4px] pl-[10px] pr-[10px] pb-[4px] justify-center ${getTypeBgColorClass(
               [pokemonTypeOne]
             )}`}
           >
@@ -146,14 +146,14 @@ function Card({ pokemon }) {
               src={typeIcons[pokemonTypeOne]}
               alt={`${pokemonTypeOne} Type`}
             />
-            <h2 className={`card-footer-type1 text-2xl `}>
+            <h2 className={`card-footer-type1 `}>
               {capitalizeWords(pokemonTypeOne)}
             </h2>
           </div>
 
           {pokemonTypeTwo && (
             <div
-              className={`type-two-container flex flex-row items-center border rounded-md gap-[6px] text-[1rem] font-bold text-white w-[120px] align-middle p-[5px]  justify-evenly ${getTypeBgColorClass(
+              className={`type-two-container flex flex-row items-center border rounded-md gap-[6px] text-[1.2rem] font-bold text-white w-[120px] align-middle pt-[4px] pl-[10px] pr-[10px] pb-[4px]  justify-center ${getTypeBgColorClass(
                 [pokemonTypeTwo]
               )} `}
             >
@@ -162,7 +162,7 @@ function Card({ pokemon }) {
                 src={typeIcons[pokemonTypeTwo]}
                 alt={`${pokemonTypeTwo} Type`}
               />
-              <h2 className={`card-footer-type2 text-2xl`}>
+              <h2 className={`card-footer-type2 `}>
                 {capitalizeWords(pokemonTypeTwo)}
               </h2>
             </div>

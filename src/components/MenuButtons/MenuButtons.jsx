@@ -46,7 +46,8 @@ function MenuButtons({ count, handleTypeMatchUps, formatTime, hourRemaining }) {
               onClick={(e) => {
                 handleTypeMatchUps(e);
               }}
-              className={`menu-buttons-${type.toLowerCase()} rounded-lg p-3 w-20`}
+              className={`menu-buttons-${type.toLowerCase()} flex flex-row items-center border rounded-md gap-[6px] text-[1rem] font-bold text-white w-[80px] align-middle pt-[4px] pl-[4px] pr-[4px] pb-[4px]  justify-center
+              `}
             >
               {type}
             </button>
