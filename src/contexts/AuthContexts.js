@@ -24,9 +24,11 @@ export function AuthProvider({ children }) {
   const [count, setCount] = useState(0);
   const [won, setWon] = useState(0);
 
+  // Firebase Auth functions
   function signup(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
+
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
@@ -34,20 +36,22 @@ export function AuthProvider({ children }) {
   function logout() {
     return signOut(auth);
   }
-  // Spits out a random pokemon from the pokemon API.
 
-  useEffect(() => {
-    const getRandomPokemon = async () => {
-      const randomNumber = Math.floor(Math.random() * 898) + 1;
+  // Fetch a new random Pokémon when the timer reaches zero or a user wins
+  const getRandomPokemon = async () => {
+    const randomNumber = Math.floor(Math.random() * 898) + 1;
+    const response = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon/${randomNumber}`
+    );
+    setPokemon(response.data);
+  };
 
-      const response = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${randomNumber}`
-      );
-      setPokemon(response.data);
-    };
-
-    getRandomPokemon();
-  }, [trys]);
+  function resetGame() {
+    setTrys(0);
+    setCount(0);
+    setHighestStreak(0);
+    setWon(0);
+  }
 
   function handleNewPokemon() {
     setNewPokemon((prevNewPokemon) => [
@@ -55,35 +59,40 @@ export function AuthProvider({ children }) {
       {
         name: pokemon.name,
         type: pokemon.types.map((type) => type?.type.name),
-        image: pokemon.sprites.front_default,
+        image: pokemon.sprites.other?.home?.front_default,
       },
     ]);
+    // Reset the timer
+    setTimeRemaining(10);
   }
+
+  // Consolidated timer and Pokémon fetching logic
+  useEffect(() => {
+    // Fetch a new Pokémon on mount or when the `trys` changes
+    getRandomPokemon();
+
+    const timerId = setInterval(() => {
+      setTimeRemaining((prevTimeRemaining) => {
+        if (prevTimeRemaining <= 1) {
+          // Time's up, increment trys, fetch new Pokémon
+          setTrys((prevTrys) => prevTrys + 1);
+          setHighestStreak(0);
+          handleNewPokemon(); // fetch a new Pokémon and reset the timer
+          return 10; // Reset the timer
+        }
+        return prevTimeRemaining - 1; // Countdown
+      });
+    }, 1000);
+
+    return () => clearInterval(timerId); // Clear interval on unmount
+  }, [trys]);
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
     });
     return unsubscribe;
-  }, []);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setTrys((prevTrys) => prevTrys + 1);
-    }, 10000); // 10 seconds
-
-    // Clean up the timeout to prevent memory leaks
-    return () => clearTimeout(timeoutId);
-  }, [trys]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTimeRemaining((prevTimeRemaining) =>
-        prevTimeRemaining === 0 ? 10 : prevTimeRemaining - 1
-      );
-    }, 1000);
-
-    return () => clearInterval(intervalId);
   }, []);
 
   const formatRoundTime = (seconds) => {
@@ -113,6 +122,8 @@ export function AuthProvider({ children }) {
     won,
     setWon,
     handleNewPokemon,
+    resetGame,
   };
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

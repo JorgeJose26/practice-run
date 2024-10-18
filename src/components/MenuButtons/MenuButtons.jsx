@@ -1,9 +1,14 @@
 import React from "react";
-
 import "./MenuButtons.scss";
 import { useAuth } from "../../contexts/AuthContexts";
 
-function MenuButtons({ count, handleTypeMatchUps, formatTime, hourRemaining }) {
+function MenuButtons({
+  count,
+  handleTypeMatchUps,
+  formatTime,
+  hourRemaining,
+  highestStreak,
+}) {
   const { timeRemaining } = useAuth();
   const { formatRoundTime } = useAuth();
   const pokemonTypes = [
@@ -30,15 +35,19 @@ function MenuButtons({ count, handleTypeMatchUps, formatTime, hourRemaining }) {
   return (
     <>
       <div>
-        <p>
+        <p className="text-white">
           <span>Hot Streak : </span>
           {count}
         </p>
-        <p>Time Remaining: {formatRoundTime(timeRemaining)}</p>
-        <p>Time Remaining: {formatTime(hourRemaining)}</p>
+        <p className="text-white">
+          New Encounter In: {formatRoundTime(timeRemaining)}
+        </p>
+        <p className="text-white">
+          Match Remaining: {formatTime(hourRemaining)}
+        </p>
       </div>
 
-      <section className="m-8">
+      <section className="m-[1rem]">
         <div className="grid grid-cols-3 justify-items-center gap-3">
           {pokemonTypes.map((type, index) => (
             <button

@@ -38,6 +38,7 @@ function Card({ pokemon }) {
     pokemon.types.length > 1 ? pokemon.types[1].type.name : null;
 
   console.log(pokemon.types[0].type.name);
+  console.log(pokemon);
 
   const typeIcons = {
     normal: normalIcon,
@@ -65,6 +66,7 @@ function Card({ pokemon }) {
     normal: "rgb(255, 204, 153)",
     poison: "rgb(170, 102, 204)",
     electric: "rgb(255, 204, 51)",
+    rock: "rgb(204, 153, 102)",
     ground: "rgb(255, 204, 102)",
     fairy: "rgb(255, 153, 204)",
     bug: "rgb(153, 204, 51)",
@@ -114,7 +116,7 @@ function Card({ pokemon }) {
       ref={myRef}
       className={`card ${
         myElementIsVisable ? `animate` : ""
-      } flex flex-col justify-center flex-wrap content-center`}
+      } flex flex-col justify-center flex-wrap content-center mb-[1rem]`}
       style={cardBackgroundStyle}
     >
       <div
@@ -137,7 +139,7 @@ function Card({ pokemon }) {
 
         <div className="card-footer-container pt-6 pb-6 flex flex-row justify-around ">
           <div
-            className={`type-one-container flex flex-row items-center border rounded-md gap-[8px] text-[1.2rem] font-bold text-white w-[120px] align-middle pt-[4px] pl-[10px] pr-[10px] pb-[4px] justify-center ${getTypeBgColorClass(
+            className={`type-one-container flex flex-row items-center border rounded-md border-transparent gap-[6px] text-[1.2rem] font-bold text-white w-[120px] align-middle pt-[4px] pl-[10px] pr-[10px] pb-[4px] justify-center ${getTypeBgColorClass(
               [pokemonTypeOne]
             )}`}
           >
@@ -153,7 +155,7 @@ function Card({ pokemon }) {
 
           {pokemonTypeTwo && (
             <div
-              className={`type-two-container flex flex-row items-center border rounded-md gap-[6px] text-[1.2rem] font-bold text-white w-[120px] align-middle pt-[4px] pl-[10px] pr-[10px] pb-[4px]  justify-center ${getTypeBgColorClass(
+              className={`type-two-container flex flex-row items-center border rounded-md border-transparent gap-[6px] text-[1.2rem] font-bold text-white w-[120px] align-middle pt-[4px] pl-[10px] pr-[10px] pb-[4px]  justify-center ${getTypeBgColorClass(
                 [pokemonTypeTwo]
               )} `}
             >

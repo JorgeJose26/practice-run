@@ -261,6 +261,7 @@ function GamePage() {
       {pokemon && <Card trys={trys} key={count} pokemon={pokemon} />}
       <MenuButtons
         count={count}
+        highestStreak={highestStreak}
         formatTime={formatTime}
         hourRemaining={hourRemaining}
         handleTypeMatchUps={handleTypeMatchUps}

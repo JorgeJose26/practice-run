@@ -1,0 +1,26 @@
+.results-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    opacity: 1;
+    transform: none;
+    background-position: 0, bottom 50% center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, .314);
+    backdrop-filter: blur(10px);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 42px;
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    color: #fff;
+    cursor: pointer;
+    &-title {
+        border-bottom: 1px solid black;
+
+        &-name {
+            padding: 1rem;
+            margin-bottom: 0;
+        }
+    }
+}
