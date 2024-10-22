@@ -37,7 +37,7 @@ function MenuButtons({
       <div>
         <p className="text-white">
           <span>Hot Streak : </span>
-          {count}
+          {highestStreak}
         </p>
         <p className="text-white">
           New Encounter In: {formatRoundTime(timeRemaining)}

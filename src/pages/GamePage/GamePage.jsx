@@ -174,12 +174,14 @@ function GamePage() {
         currentWeaknesses[5] === selectedType
       ) {
         setCount(count + 1);
+        setHighestStreak(highestStreak + 1);
         setTrys(trys + 1);
         setTimeRemaining(10);
         setWon(won + 1);
         handleNewPokemon();
       } else {
         console.log("wrong");
+        setHighestStreak(0);
         setCount(0);
         setTrys(trys + 1);
         setTimeRemaining(10);
@@ -219,6 +221,7 @@ function GamePage() {
         currentResistances2nd[9] === selectedType
       ) {
         console.log("hit a resistance");
+        setHighestStreak(0);
         setCount(0);
         setTrys(trys + 1);
         setTimeRemaining(10);
@@ -238,6 +241,7 @@ function GamePage() {
         currentWeaknesses2md[5] === selectedType
       ) {
         setCount(count + 1);
+        setHighestStreak(highestStreak + 1);
         setTrys(trys + 1);
         setWon(won + 1);
         setTimeRemaining(10);
@@ -252,9 +256,6 @@ function GamePage() {
       }
     }
   };
-  if (count > highestStreak) {
-    setHighestStreak(count);
-  }
 
   return (
     <div className="p-8">

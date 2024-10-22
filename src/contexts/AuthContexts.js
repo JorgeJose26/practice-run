@@ -49,19 +49,32 @@ export function AuthProvider({ children }) {
   function resetGame() {
     setTrys(0);
     setCount(0);
+    setTimeRemaining(10);
     setHighestStreak(0);
     setWon(0);
   }
 
   function handleNewPokemon() {
-    setNewPokemon((prevNewPokemon) => [
-      ...prevNewPokemon,
-      {
-        name: pokemon.name,
-        type: pokemon.types.map((type) => type?.type.name),
-        image: pokemon.sprites.other?.home?.front_default,
-      },
-    ]);
+    setNewPokemon((prevNewPokemon) => {
+      // Check if the current Pokémon is already in the array
+      const isAlreadyDefeated = prevNewPokemon.some(
+        (p) => p.name === pokemon.name
+      );
+
+      if (!isAlreadyDefeated) {
+        return [
+          ...prevNewPokemon,
+          {
+            name: pokemon.name,
+            type: pokemon.types.map((type) => type?.type.name),
+            image: pokemon.sprites.other?.home?.front_default,
+          },
+        ];
+      }
+      // If already defeated, return the array unchanged
+      return prevNewPokemon;
+    });
+
     // Reset the timer
     setTimeRemaining(10);
   }
@@ -77,7 +90,6 @@ export function AuthProvider({ children }) {
           // Time's up, increment trys, fetch new Pokémon
           setTrys((prevTrys) => prevTrys + 1);
           setHighestStreak(0);
-          handleNewPokemon(); // fetch a new Pokémon and reset the timer
           return 10; // Reset the timer
         }
         return prevTimeRemaining - 1; // Countdown

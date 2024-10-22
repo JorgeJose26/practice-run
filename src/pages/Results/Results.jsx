@@ -136,7 +136,6 @@ function Results() {
           Play Again
         </button>
       </div>
-
       {newPokemon.map((p, index) => {
         const cardBackgroundStyle = {
           backgroundImage: `url(${pokeballBackground}), radial-gradient(80% 80% at 50% bottom, ${
