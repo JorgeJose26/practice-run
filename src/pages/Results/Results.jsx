@@ -128,9 +128,11 @@ function Results() {
   return (
     <section className="flex flex-col p-8">
       <div className="mb-5">
-        <p className="text-white">Results</p>
-        <p className="text-white">Highest Win Streak: {highestStreak}</p>
-        <p className="text-white">Pokemon Defeated: {won}</p>
+        <p className="text-white text-lg">Results</p>
+        <p className="text-white text-base">
+          Highest Win Streak: {highestStreak}
+        </p>
+        <p className="text-white text-base">Pokemon Defeated: {won}</p>
         {/* New Play Again button */}
         <button className="text-white" onClick={handlePlayAgain}>
           Play Again
