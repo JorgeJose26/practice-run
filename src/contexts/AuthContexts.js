@@ -23,6 +23,7 @@ export function AuthProvider({ children }) {
   const [newPokemon, setNewPokemon] = useState([]);
   const [count, setCount] = useState(0);
   const [won, setWon] = useState(0);
+  const [holdHightScore, setHoldHightScore] = useState(0);
 
   // Firebase Auth functions
   function signup(email, password) {
@@ -135,6 +136,8 @@ export function AuthProvider({ children }) {
     setWon,
     handleNewPokemon,
     resetGame,
+    holdHightScore,
+    setHoldHightScore,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -23,7 +23,8 @@ import groundIcon from "../../assets/images/ground.svg";
 import fairyIcon from "../../assets/images/fairy.svg";
 
 function Results() {
-  const { newPokemon, highestStreak, won, resetGame } = useAuth(); // Get resetGame from context
+  const { newPokemon, highestStreak, won, resetGame, holdHightScore } =
+    useAuth(); // Get resetGame from context
   const navigate = useNavigate();
 
   const capitalizeWords = (str) => {
@@ -130,7 +131,7 @@ function Results() {
       <div className="mb-5">
         <p className="text-white text-lg">Results</p>
         <p className="text-white text-base">
-          Highest Win Streak: {highestStreak}
+          Highest Win Streak: {holdHightScore}
         </p>
         <p className="text-white text-base">Pokemon Defeated: {won}</p>
         {/* New Play Again button */}

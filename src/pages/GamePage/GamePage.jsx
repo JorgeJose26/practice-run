@@ -16,6 +16,7 @@ function GamePage() {
   const { won, setWon } = useAuth();
   const [lost, setLost] = useState(0);
   const { handleNewPokemon } = useAuth();
+  const { holdHightScore, setHoldHightScore } = useAuth();
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -157,10 +158,6 @@ function GamePage() {
     let currentWeaknesses2md = typeMatchups[currentPokemonSndType]?.weaknesses;
     let selectedType = e.target.innerHTML.toLowerCase();
 
-    console.log(currentWeaknesses2md);
-    console.log(currentPokemonSndType);
-    console.log(currentWeaknesses);
-
     //Have to check if pokemon has one type or two.
     //if the pokemon has one type checm if the selected type is equal to the current weakness if so +1
     //if user has two types check for the two types weakness we will sort out the reistances later.
@@ -182,6 +179,7 @@ function GamePage() {
       } else {
         console.log("wrong");
         setHighestStreak(0);
+        setHoldHightScore(highestStreak);
         setCount(0);
         setTrys(trys + 1);
         setTimeRemaining(10);
@@ -223,6 +221,7 @@ function GamePage() {
         console.log("hit a resistance");
         setHighestStreak(0);
         setCount(0);
+        setHoldHightScore(highestStreak);
         setTrys(trys + 1);
         setTimeRemaining(10);
         setLost(lost + 1);
@@ -249,6 +248,8 @@ function GamePage() {
       } else {
         console.log("wrong");
         console.log("didnt hit a super effective move");
+        setHoldHightScore(highestStreak);
+        setHighestStreak(0);
         setCount(0);
         setLost(lost + 1);
         setTrys(trys + 1);
