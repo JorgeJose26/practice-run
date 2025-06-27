@@ -107,3 +107,43 @@
 
     }
 }
+
+.info-container {
+  margin: 0.5rem 0;
+}
+
+.info-card {
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.info-card span {
+  margin: 0;
+}
+
+.time-expiring {
+  background-color: #ff0000; /* Red background for urgency */
+  animation: flash 1s infinite; /* Flash animation */
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -34,17 +34,27 @@ function MenuButtons({
 
   return (
     <>
-      <div>
-        <p className="text-white">
-          <span>Hot Streak : </span>
-          {highestStreak}
-        </p>
-        <p className="text-white">
-          New Encounter In: {formatRoundTime(timeRemaining)}
-        </p>
-        <p className="text-white">
-          Match Remaining: {formatTime(hourRemaining)}
-        </p>
+      <div className="info-container grid grid-cols-3 gap-2 text-center">
+        <div className="info-card bg-red-500 text-white p-2 rounded-md shadow-sm flex items-center justify-center">
+          <span className="text-xl">🔥</span>
+          <span className="text-lg font-extrabold ml-2">{highestStreak}</span>
+        </div>
+        <div
+          className={`info-card ${
+            timeRemaining <= 5 ? "time-expiring" : "bg-blue-500"
+          } text-white p-2 rounded-md shadow-sm flex items-center justify-center`}
+        >
+          <span className="text-xl">⏳</span>
+          <span className="text-lg font-extrabold ml-2">
+            {formatRoundTime(timeRemaining)}
+          </span>
+        </div>
+        <div className="info-card bg-green-500 text-white p-2 rounded-md shadow-sm flex items-center justify-center">
+          <span className="text-xl">⏱️</span>
+          <span className="text-lg font-extrabold ml-2">
+            {formatTime(hourRemaining)}
+          </span>
+        </div>
       </div>
 
       <section className="m-[1rem]">

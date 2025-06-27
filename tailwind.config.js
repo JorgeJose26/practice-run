@@ -19,6 +19,7 @@ module.exports = {
       },
       fontFamily: {
         custom: ["Lilita One", "sans-serif"],
+        custom2: ["Press Start 2P", "cursive"],
       },
     },
   },

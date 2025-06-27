@@ -132,7 +132,7 @@ function Card({ pokemon }) {
           />
         </div>
         <div className="card-title ">
-          <h2 className="card-title-name text-[2rem]">
+          <h2 className="card-title-name text-[2rem] ">
             {capitalizeWords(pokemon.name)}
           </h2>
         </div>
