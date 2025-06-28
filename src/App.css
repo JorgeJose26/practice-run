@@ -5,6 +5,8 @@
 @font-face {
   font-family: 'mont';
   src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
+  font-family: 'pokemon';
+  src: url(./assets//fonts/Pokemon\ Classic.ttf);
 }
 
 .App {

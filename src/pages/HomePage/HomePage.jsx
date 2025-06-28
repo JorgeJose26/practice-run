@@ -76,7 +76,7 @@ function HomePage(props) {
     <section className="bg-black p-2">
       <div className="mt-4">
         <img src={pokemonTrainer} alt="pokemonTrainer"></img>
-        <p className="text-lg font-[mont]  leading-relaxed text-left text-white py-6">
+        <p className="text-md font-[pokemon]  leading-relaxed text-left text-white py-6 ">
           Get ready for an electrifying adventure! In this game, wild Pokémon
           will appear, and your mission is to quickly click on the type that has
           the advantage over the wild Pokémon. Test your skills and knowledge to
@@ -84,7 +84,7 @@ function HomePage(props) {
           you conquer before the clock hits zero? Dive in and find out!
         </p>
       </div>
-      <div className="flex flex-row items-center content-center gap-2 ">
+      <div className="flex flex-row items-center content-center gap-2">
         <img
           onClick={() => navigate("/game")}
           className="shakeButton w-[2.5rem]"
@@ -93,9 +93,9 @@ function HomePage(props) {
         />
         <h2
           onClick={() => navigate("/game")}
-          className="text-white font-[mont] text-2xl"
+          className="text-white font-[pokemon] text-2xl"
         >
-          Play
+          Game Start
         </h2>
       </div>
     </section>
